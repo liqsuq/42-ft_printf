@@ -6,7 +6,7 @@
 /*   By: kadachi <kadachi@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:47 by kadachi           #+#    #+#             */
-/*   Updated: 2024/11/30 21:08:38 by kadachi          ###   ########.fr       */
+/*   Updated: 2024/12/01 20:17:45 by kadachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 
 int	select_format(const char *format, va_list argp)
 {
-	if (format[1] == '\0')
-		return (-1);
 	if (format[1] == 'c')
 		return (print_char(va_arg(argp, int)));
-	else if (format[1] == 's')
+	if (format[1] == 's')
 		return (print_str(va_arg(argp, char *)));
-	else if (format[1] == 'p')
+	if (format[1] == 'p')
 		return (print_ptr(va_arg(argp, unsigned long)));
-	else if (format[1] == 'd' || format[1] == 'i')
+	if (format[1] == 'd' || format[1] == 'i')
 		return (print_int(va_arg(argp, int), 0, "0123456789"));
-	else if (format[1] == 'u')
+	if (format[1] == 'u')
 		return (print_int(va_arg(argp, unsigned int), 1, "0123456789"));
-	else if (format[1] == 'x')
+	if (format[1] == 'x')
 		return (print_int(va_arg(argp, unsigned int), 1, "0123456789abcdef"));
-	else if (format[1] == 'X')
+	if (format[1] == 'X')
 		return (print_int(va_arg(argp, unsigned int), 1, "0123456789ABCDEF"));
-	else if (format[1] == '%')
+	if (format[1] == '%')
 		return (print_char('%'));
 	return (-1);
 }
