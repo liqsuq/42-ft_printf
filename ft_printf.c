@@ -6,13 +6,13 @@
 /*   By: kadachi <kadachi@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:47 by kadachi           #+#    #+#             */
-/*   Updated: 2024/12/01 20:17:45 by kadachi          ###   ########.fr       */
+/*   Updated: 2024/12/02 17:04:59 by kadachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	select_format(const char *format, va_list argp)
+static int	select_format(const char *format, va_list argp)
 {
 	if (format[1] == 'c')
 		return (print_char(va_arg(argp, int)));
