@@ -1,5 +1,5 @@
 NAME := libftprintf.a
-SOURCE := ft_printf.c print_string.c print_number.c
+SOURCE := ft_printf.c ft_printf_utils.c
 OBJECT := $(SOURCE:.c=.o)
 LFTDIR := libft
 LFTLIB := libft.a

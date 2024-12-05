@@ -6,11 +6,25 @@
 /*   By: kadachi <kadachi@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:47 by kadachi           #+#    #+#             */
-/*   Updated: 2024/12/02 17:04:59 by kadachi          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:06:12 by kadachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	print_char(int c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
+
+static int	print_str(char *str)
+{
+	if (str == NULL)
+		str = "(null)";
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
+}
 
 static int	select_format(const char *format, va_list argp)
 {
@@ -47,15 +61,10 @@ int	ft_vprintf(const char *format, va_list argp)
 			if (tmp == -1)
 				return (-1);
 			format += 2;
+			size += tmp;
 		}
 		else
-		{
-			tmp = print_raw(format);
-			if (tmp == -1)
-				return (-1);
-			format += tmp;
-		}
-		size += tmp;
+			size += print_char(*format++);
 	}
 	return (size);
 }
