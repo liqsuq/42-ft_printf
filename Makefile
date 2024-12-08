@@ -2,17 +2,14 @@ NAME := libftprintf.a
 SOURCE := ft_printf.c print_string.c print_number.c
 OBJECT := $(SOURCE:.c=.o)
 LFTDIR := libft
-LFTLIB := libft.a
+LFTLIB := $(LFTDIR)/libft.a
 CFLAGS := -Wall -Wextra -Werror -I$(LFTDIR)
 
 $(NAME): $(OBJECT) $(LFTLIB)
 	cp $(LFTLIB) $(NAME)
 	ar rcs $(NAME) $(OBJECT)
 
-$(LFTLIB): $(LFTDIR)/$(LFTLIB)
-	cp $(LFTDIR)/$(LFTLIB) $(LFTLIB)
-
-$(LFTDIR)/$(LFTLIB):
+$(LFTLIB):
 	make -C $(LFTDIR)
 
 all: $(NAME)
@@ -23,6 +20,6 @@ clean:
 
 fclean: clean
 	make -C $(LFTDIR) fclean
-	$(RM) $(NAME) $(LFTLIB)
+	$(RM) $(NAME)
 
 re: fclean all
